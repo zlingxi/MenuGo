@@ -61,7 +61,7 @@ const en = {
   cmdInfoTitle: "Command Line Info",
   aboutTitle: "About MenuGo",
   aboutBody:
-    "MenuGo — a lightweight utility for switching Windows 11 context menu styles.\n\nToggles between classic and default menus, restarts Explorer, and includes taskbar options and multi-language support.\n\nBuilt with Tauri 2 + Rust.",
+    "MenuGo — a lightweight utility for switching Windows 11 context menu styles.\nToggles between classic and default menus, restarts Explorer, and includes taskbar options and multi-language support.\nBuilt with Tauri 2 + Rust.",
   styleChanged: "Menu style updated",
   restartDone: "Explorer restarted",
   needAdmin: "Applying to all users requires administrator privileges.",
@@ -113,7 +113,7 @@ const zhCN = {
   cmdInfoTitle: "命令行帮助",
   aboutTitle: "关于 MenuGo",
   aboutBody:
-    "MenuGo —— 一个轻量的 Windows 11 右键菜单样式切换小工具。\n\n支持经典 / 默认菜单一键切换、重启资源管理器、任务栏调整与多语言。\n\n基于 Tauri 2 + Rust 开发。",
+    "MenuGo —— 一个轻量的 Windows 11 右键菜单样式切换小工具。\n支持经典 / 默认菜单一键切换、重启资源管理器、任务栏调整与多语言。\n基于 Tauri 2 + Rust 开发。",
   styleChanged: "菜单样式已更新",
   restartDone: "资源管理器已重启",
   needAdmin: "应用到所有用户需要管理员权限。",

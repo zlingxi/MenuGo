@@ -124,14 +124,13 @@ button {
 
 .topbar {
   position: relative;
-  flex: 0 0 56px;
-  height: 56px;
+  flex: 0 0 46px;
+  height: 46px;
   display: flex;
   align-items: center;
-  gap: 12px;
-  padding: 0 18px;
-  background: var(--surface);
-  border-bottom: 1px solid var(--border);
+  gap: 10px;
+  padding: 0 14px;
+  background: transparent;
 }
 
 .brand {
@@ -142,10 +141,10 @@ button {
 }
 
 .brand-mark {
-  width: 30px;
-  height: 30px;
-  flex: 0 0 30px;
-  border-radius: 9px;
+  width: 24px;
+  height: 24px;
+  flex: 0 0 24px;
+  border-radius: 8px;
   display: grid;
   place-items: center;
   overflow: hidden;
@@ -166,13 +165,13 @@ button {
 }
 
 .brand-name {
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 600;
   line-height: 1.2;
 }
 
 .brand-sub {
-  font-size: 11px;
+  font-size: 10px;
   color: var(--text-3);
   white-space: nowrap;
   overflow: hidden;
@@ -183,7 +182,25 @@ button {
   margin-left: auto;
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 6px;
+}
+/* Topbar controls float on the background - no boxed chips up here. */
+.topbar .ghost-btn,
+.topbar .icon-btn {
+  border-color: transparent;
+  background: transparent;
+}
+
+.topbar .ghost-btn:hover,
+.topbar .icon-btn:hover {
+  background: var(--surface-2);
+}
+
+.topbar .ghost-btn[aria-expanded="true"],
+.topbar .icon-btn[aria-expanded="true"] {
+  background: var(--accent-soft);
+  border-color: transparent;
+  color: var(--accent);
 }
 
 .ico {
@@ -303,7 +320,7 @@ button {
 
 .language-menu {
   position: absolute;
-  top: 50px;
+  top: 44px;
   right: 94px;
   width: 180px;
   max-height: 264px;
@@ -353,9 +370,9 @@ button {
   flex: 1 1 auto;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 12px;
-  padding: 18px;
+  padding: 8px 18px 14px;
   overflow-y: auto;
 }
 
@@ -371,7 +388,7 @@ button {
 
 .hero-top {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   justify-content: space-between;
   gap: 16px;
 }
@@ -380,14 +397,24 @@ button {
   min-width: 0;
 }
 
-.eyebrow {
-  font-size: 11px;
+.style-line {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+
+.style-line .eyebrow {
+  font-size: 14px;
+  color: var(--text-3);
+}
+
+.style-line .line-sep {
   color: var(--text-3);
 }
 
 #style-title {
-  margin: 5px 0 6px;
-  font-size: 23px;
+  margin: 0;
+  font-size: 14px;
   font-weight: 600;
   line-height: 1.2;
 }
@@ -408,6 +435,7 @@ button {
   background: var(--accent-soft);
   display: grid;
   place-items: center;
+  transform: scale(0.5);
 }
 
 .mini-menu {
@@ -545,7 +573,7 @@ body.classic .mini-line {
 
 .more-menu {
   position: absolute;
-  top: 50px;
+  top: 44px;
   right: 18px;
   width: 200px;
   padding: 5px;
@@ -616,10 +644,10 @@ body.classic .mini-line {
 
 .settings-panel {
   position: absolute;
-  top: 52px;
+  top: 48px;
   right: 14px;
   width: 318px;
-  max-height: calc(100vh - 66px);
+  max-height: calc(100vh - 58px);
   overflow-y: auto;
   padding: 8px;
   border: 1px solid var(--border);
@@ -633,7 +661,7 @@ body.classic .mini-line {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 6px 8px 10px;
+  padding: 4px 8px 8px;
   border-bottom: 1px solid var(--border);
 }
 
@@ -644,14 +672,14 @@ body.classic .mini-line {
 }
 
 .panel-body {
-  padding: 6px 0;
+  padding: 2px 0;
 }
 
 .setting-row {
   display: flex;
   align-items: center;
   gap: 11px;
-  padding: 9px 8px;
+  padding: 6px 8px;
   border-radius: var(--radius-sm);
   cursor: pointer;
 }
@@ -675,10 +703,10 @@ body.classic .mini-line {
 }
 
 .setting-icon {
-  width: 28px;
-  height: 28px;
-  flex: 0 0 28px;
-  border-radius: 8px;
+  width: 24px;
+  height: 24px;
+  flex: 0 0 24px;
+  border-radius: 7px;
   background: var(--surface-2);
   color: var(--text-2);
   display: grid;
@@ -686,8 +714,8 @@ body.classic .mini-line {
 }
 
 .setting-icon svg {
-  width: 15px;
-  height: 15px;
+  width: 13px;
+  height: 13px;
   fill: none;
   stroke: currentColor;
   stroke-width: 1.7;
@@ -700,7 +728,7 @@ body.classic .mini-line {
   min-width: 0;
   display: flex;
   flex-direction: column;
-  gap: 2px;
+  gap: 1px;
 }
 
 .setting-title {
@@ -761,7 +789,7 @@ body.classic .mini-line {
   align-items: center;
   justify-content: space-between;
   gap: 8px;
-  padding: 8px 8px 4px;
+  padding: 6px 8px 2px;
   border-top: 1px solid var(--border);
 }
 
@@ -787,27 +815,40 @@ body.classic .mini-line {
 }
 
 .dialog {
-  width: 360px;
+  display: flex;
+  flex-direction: column;
+  width: 480px;
   max-width: calc(100vw - 32px);
-  padding: 18px;
+  max-height: calc(100vh - 32px);
+  padding: 16px 18px;
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
-  background: var(--surface);
-  box-shadow: var(--shadow);
+  background: var(--surface-2);
+  box-shadow:
+    0 24px 64px rgba(12, 18, 30, 0.22),
+    0 4px 12px rgba(12, 18, 30, 0.1);
+}
+
+/* Fixed-size variant for the Command Line Info / About dialogs. */
+.dialog-wide {
+  height: 220px;
 }
 
 .dialog h2 {
-  margin: 0 0 10px;
-  font-size: 14px;
+  margin: 0;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--border);
+  font-size: 13.5px;
   font-weight: 600;
 }
 
 .dialog-body {
+  flex: 1 1 auto;
+  margin-top: 10px;
   font-size: 12px;
-  line-height: 1.7;
+  line-height: 1.5;
   color: var(--text-2);
   white-space: pre-wrap;
-  max-height: 240px;
   overflow-y: auto;
   user-select: text;
 }
@@ -821,7 +862,8 @@ body.classic .mini-line {
 .dialog-actions {
   display: flex;
   justify-content: flex-end;
-  margin-top: 16px;
+  gap: 8px;
+  margin-top: 12px;
 }
 
 .dialog-actions .primary-btn {
@@ -874,8 +916,8 @@ body.is-dark .theme-moon {
 }
 
 .theme-block {
-  margin-top: 4px;
-  padding: 11px 8px 4px;
+  margin-top: 2px;
+  padding: 8px 8px 2px;
   border-top: 1px solid var(--border);
 }
 
@@ -883,7 +925,7 @@ body.is-dark .theme-moon {
   display: flex;
   flex-direction: column;
   gap: 2px;
-  margin-bottom: 9px;
+  margin-bottom: 6px;
 }
 
 .theme-options {
@@ -897,7 +939,7 @@ body.is-dark .theme-moon {
 
 .theme-opt {
   flex: 1 1 0;
-  height: 27px;
+  height: 25px;
   border: 0;
   border-radius: 6px;
   background: transparent;
@@ -921,4 +963,28 @@ body.is-dark .theme-moon {
   * {
     transition-duration: 0.01ms !important;
   }
+}
+
+/* ---------- thin scrollbars (WebView2/Chromium) ---------- */
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 3px;
+  background: var(--border);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-3);
+}
+
+::-webkit-scrollbar-corner {
+  background: transparent;
 }

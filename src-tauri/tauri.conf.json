@@ -12,7 +12,7 @@
       {
         "title": "MenuGo",
         "width": 560,
-        "height": 300,
+        "height": 260,
         "resizable": false,
         "maximizable": false,
         "visible": false

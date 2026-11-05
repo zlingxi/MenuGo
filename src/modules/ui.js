@@ -97,6 +97,7 @@ export function renderStatus(status, settings, lang, t) {
   $("os-label").textContent = status.osName || "Windows";
   $("os-label").title = status.osBuild ? `Build ${status.osBuild}` : "";
   $("elevated-label").classList.toggle("hidden", !status.elevated);
+  $("elevated-sep").classList.toggle("hidden", !status.elevated);
 
   const supported = Boolean(status.windows11);
   $("os-warning").classList.toggle("hidden", supported);
@@ -202,6 +203,8 @@ export function isMoreMenuOpen() {
 
 export function infoDialog({ title, message, okText, monospace = false }) {
   if (dialogResolver) dialogResolver();
+  // Command Line Info / About use the fixed 480x220 card variant.
+  document.querySelector(".dialog").classList.add("dialog-wide");
   $("dialog-title").textContent = title;
 
   const body = $("dialog-body");
@@ -233,6 +236,7 @@ export function isDialogOpen() {
 /// Two-button dialog. Resolves `true` on OK, `false` on cancel/dismiss.
 export function confirmDialog({ title, message, okText, cancelText }) {
   if (dialogResolver) dialogResolver();
+  document.querySelector(".dialog").classList.remove("dialog-wide");
   $("dialog-title").textContent = title;
   const body = $("dialog-body");
   body.textContent = message;

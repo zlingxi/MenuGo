@@ -90,8 +90,11 @@
         <section class="hero" aria-labelledby="style-title">
           <div class="hero-top">
             <div class="hero-copy">
-              <div class="eyebrow" data-i18n="currentStyle">当前样式</div>
-              <h1 id="style-title">&mdash;</h1>
+              <div class="style-line">
+                <span class="eyebrow" data-i18n="currentStyle">当前样式</span>
+                <span class="line-sep" aria-hidden="true">&middot;</span>
+                <h1 id="style-title">&mdash;</h1>
+              </div>
               <p id="style-desc"></p>
             </div>
             <div class="hero-art" aria-hidden="true">
@@ -136,7 +139,7 @@
 
       <footer class="statusline">
         <span id="os-label">Windows</span>
-        <span class="sep">&middot;</span>
+        <span id="elevated-sep" class="sep hidden">&middot;</span>
         <span id="elevated-label" class="hidden" data-i18n="admin">管理员</span>
         <span class="grow"></span>
         <span id="version-label">v0.1.0</span>

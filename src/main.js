@@ -210,7 +210,7 @@ async function showCommandInfo() {
 async function showAbout() {
   await ui.infoDialog({
     title: T("aboutTitle"),
-    message: `${T("aboutBody")}\n\nVersion: ${state.version}`,
+    message: `${T("aboutBody")}\nVersion: ${state.version}`,
     okText: T("ok"),
   });
 }
