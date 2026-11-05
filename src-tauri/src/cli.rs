@@ -53,7 +53,13 @@ pub fn handle(args: &[String]) -> LaunchMode {
     }
 
     if let Some(classic) = style {
-        let _ = registry::set_classic(classic);
+        // Headless callers (schedulers, scripts) need a real failure signal,
+        // exactly like /R below: silently swallowing a registry error would
+        // make the script believe the style has changed.
+        if let Err(e) = registry::set_classic(classic) {
+            eprintln!("MenuGo: failed to update the context menu registry key: {e}");
+            std::process::exit(1);
+        }
     }
     if restart {
         // Headless callers (schedulers, scripts) need a real failure signal;

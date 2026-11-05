@@ -227,11 +227,16 @@ async function clearCache() {
     cancelText: T("cancel"),
   });
   if (!confirmed) return;
+  // Block re-entry while the (potentially multi-second) deletion runs; the
+  // page reloads afterwards anyway.
+  const button = $("btn-clear-cache");
+  button.disabled = true;
   try {
     const allGone = await api.clearCache();
     ui.toast(allGone ? T("clearCacheDone") : T("clearCachePartial"), "info");
   } catch (error) {
     ui.toast(errorText(error), "error");
+    button.disabled = false;
     return;
   }
   // Reload so the UI reflects the reset defaults (light theme, auto language)
@@ -272,6 +277,7 @@ function bindEvents() {
   });
 
   $("language-menu").addEventListener("click", async (event) => {
+    if (!state.settings) return; // refresh() has not finished yet
     const target = event.target instanceof Element ? event.target : null;
     const item = target?.closest("[data-value]");
     if (!item) return;
@@ -291,6 +297,7 @@ function bindEvents() {
   });
 
   $("sw-apply-all").addEventListener("change", (event) => {
+    if (!state.status || !state.settings) return; // refresh() has not finished yet
     const next = event.target.checked;
     if (!preview && next && !state.status.elevated) {
       ui.toast(T("needAdmin"), "error");
@@ -310,6 +317,7 @@ function bindEvents() {
   });
 
   $("sw-auto-hide").addEventListener("change", (event) => {
+    if (!state.status) return; // refresh() has not finished yet
     const next = event.target.checked;
     runCommand(
       async () => {
@@ -323,6 +331,7 @@ function bindEvents() {
   });
 
   $("sw-auto-restart").addEventListener("change", (event) => {
+    if (!state.settings) return; // refresh() has not finished yet
     const next = event.target.checked;
     runCommand(
       async () => {
@@ -335,6 +344,7 @@ function bindEvents() {
   });
 
   $("sw-taskbar-top").addEventListener("change", (event) => {
+    if (!state.status) return; // refresh() has not finished yet
     const next = event.target.checked;
     runCommand(
       async () => {

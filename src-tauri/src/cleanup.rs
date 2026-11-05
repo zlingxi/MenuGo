@@ -24,7 +24,7 @@ const SWEEP_FLAG: &str = "com.lingxi.menugo.cleanup-pending";
 /// left behind; otherwise a sweep marker is written for the next launch.
 pub fn clear_now() -> bool {
     let mut all_gone = true;
-    if let Some(dir) = own_dir("APPDATA", SETTINGS_DIR) {
+    if let Some(dir) = settings_dir() {
         all_gone &= remove_tree(&dir, 1);
     }
     if let Some(dir) = own_dir("LOCALAPPDATA", WEBVIEW_DIR) {
@@ -48,12 +48,37 @@ pub fn sweep_if_pending() {
     if !flag.exists() {
         return;
     }
-    if let Some(dir) = own_dir("LOCALAPPDATA", WEBVIEW_DIR) {
-        if dir.exists() {
-            remove_tree(&dir, 10);
-        }
+    // Retry BOTH directories: settings.ini can equally have been locked when
+    // the marker was written, and a leftover one would silently restore the
+    // old settings on this very launch.
+    let settings_gone = match settings_dir() {
+        Some(dir) if dir.exists() => remove_tree(&dir, 10),
+        _ => true,
+    };
+    let webview_gone = match own_dir("LOCALAPPDATA", WEBVIEW_DIR) {
+        Some(dir) if dir.exists() => remove_tree(&dir, 10),
+        _ => true,
+    };
+    // Keep the marker while something is still locked, so a later launch
+    // retries instead of silently abandoning the leftovers.
+    if settings_gone && webview_gone {
+        let _ = std::fs::remove_file(flag);
     }
-    let _ = std::fs::remove_file(flag);
+}
+
+/// Mirror config.rs's resolution: `%APPDATA%\MenuGo`, falling back to the
+/// working directory when APPDATA is unset. In portable mode this directory
+/// only holds stale files (settings live beside the exe) - still ours to
+/// delete.
+fn settings_dir() -> Option<PathBuf> {
+    let base = std::env::var_os("APPDATA")
+        .map(PathBuf::from)
+        .unwrap_or_else(|| PathBuf::from("."));
+    let dir = base.join(SETTINGS_DIR);
+    if dir.file_name()?.to_str()? != SETTINGS_DIR {
+        return None;
+    }
+    Some(dir)
 }
 
 /// Resolve `%BASE%\<name>` and refuse anything whose last component is not

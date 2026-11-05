@@ -137,6 +137,13 @@ pub fn set_auto_restart(state: State<'_, AppState>, enabled: bool) -> Result<Set
 
 #[tauri::command]
 pub fn set_taskbar_top(state: State<'_, AppState>, enabled: bool) -> Result<AppStatus, String> {
+    // Windows 11 22H2+ ignores the StuckRects3 edge byte. The UI already
+    // disables the switch there; this is the matching backend guard so no
+    // caller can write a value the shell will silently drop.
+    let (build, _) = registry::os_info();
+    if build >= 22600 {
+        return Err("taskbar position is not supported on this Windows 11 build".into());
+    }
     registry::set_taskbar_top(enabled).map_err(|e| e.to_string())?;
     state.needs_restart.store(true, Ordering::Relaxed);
     Ok(status_from(&*state))

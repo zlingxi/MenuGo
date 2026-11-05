@@ -126,7 +126,7 @@ src-tauri/
   src/titlebar.rs           DWM タイトルバー着色（dwmapi FFI）
   src/config.rs             INI 設定の永続化
   src/models.rs             DTO
-  tauri.conf.json           固定 540x320 ウィンドウ（resizable / maximizable = false）
+  tauri.conf.json           固定 560x330 ウィンドウ（resizable / maximizable = false）
   capabilities/default.json アクセス許可
 ```
 

@@ -126,7 +126,7 @@ src-tauri/
   src/titlebar.rs           DWM 标题栏着色（dwmapi FFI）
   src/config.rs             INI 设置持久化
   src/models.rs             DTO
-  tauri.conf.json           固定 540x320 窗口（resizable / maximizable = false）
+  tauri.conf.json           固定 560x330 窗口（resizable / maximizable = false）
   capabilities/default.json 权限
 ```
 

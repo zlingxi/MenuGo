@@ -137,7 +137,7 @@ src-tauri/
   src/titlebar.rs           DWM title-bar coloring (dwmapi FFI)
   src/config.rs             INI settings persistence
   src/models.rs             DTOs
-  tauri.conf.json           Fixed 540x320 window (resizable / maximizable = false)
+  tauri.conf.json           Fixed 560x330 window (resizable / maximizable = false)
   capabilities/default.json Permissions
 ```
 

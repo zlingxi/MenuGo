@@ -126,7 +126,7 @@ src-tauri/
   src/titlebar.rs           DWM 제목 표시줄 색상 (dwmapi FFI)
   src/config.rs             INI 설정 저장
   src/models.rs             데이터 전송 객체(DTO)
-  tauri.conf.json           고정 540x320 창 (resizable / maximizable = false)
+  tauri.conf.json           고정 560x330 창 (resizable / maximizable = false)
   capabilities/default.json 권한
 ```
 

@@ -39,7 +39,6 @@ pub struct AppState {
 #[cfg_attr(mobile, tauri::mobile_entry_point)]
 pub fn run(show_command_info: bool) {
     tauri::Builder::default()
-        .plugin(tauri_plugin_opener::init())
         .manage(AppState {
             settings: Mutex::new(config::load()),
             needs_restart: AtomicBool::new(false),
@@ -79,7 +78,9 @@ pub fn run(show_command_info: bool) {
                 };
                 titlebar::apply(&window, dark);
                 place_on_cursor_monitor(&window);
-                window.show()?;
+                // A failed show() must not abort the whole startup; the same
+                // call succeeds on every normal Windows session anyway.
+                let _ = window.show();
             }
             Ok(())
         })
