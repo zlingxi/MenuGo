@@ -13,8 +13,6 @@
 [![Backend](https://img.shields.io/badge/backend-Rust-DEA584?logo=rust&logoColor=black)](https://www.rust-lang.org)
 [![Frontend](https://img.shields.io/badge/frontend-vanilla%20JS-F7DF1E?logo=javascript&logoColor=black)](src)
 [![Release](https://img.shields.io/github/v/release/zlingxi/MenuGo)](https://github.com/zlingxi/MenuGo/releases/latest)
-[![Stars](https://img.shields.io/github/stars/zlingxi/MenuGo?style=social)](https://github.com/zlingxi/MenuGo/stargazers)
-[![Downloads](https://img.shields.io/github/downloads/zlingxi/MenuGo/total)](https://github.com/zlingxi/MenuGo/releases)
 
 **English** | [简体中文](docs/README.zh-CN.md) | [繁體中文](docs/README.zh-TW.md) | [日本語](docs/README.ja.md) | [한국어](docs/README.ko.md)
 
