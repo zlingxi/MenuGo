@@ -276,6 +276,38 @@ function bindEvents() {
     else ui.openLanguageMenu();
   });
 
+  $("btn-more").addEventListener("click", () => {
+    if (ui.isMoreMenuOpen()) ui.closeMoreMenu();
+    else ui.openMoreMenu();
+  });
+
+  $("more-menu").addEventListener("click", async (event) => {
+    const target = event.target instanceof Element ? event.target : null;
+    const button = target?.closest("[data-link]");
+    if (!button) return;
+    const action = button.dataset.link;
+    if (action === "cmdinfo") {
+      ui.closeMoreMenu();
+      return showCommandInfo();
+    }
+    if (action === "about") {
+      ui.closeMoreMenu();
+      return showAbout();
+    }
+    const url = LINKS[action];
+    if (!url) return;
+    if (preview) {
+      ui.toast(url, "info");
+      return;
+    }
+    ui.closeMoreMenu();
+    try {
+      await api.openUrl(url);
+    } catch (error) {
+      ui.toast(errorText(error), "error");
+    }
+  });
+
   $("language-menu").addEventListener("click", async (event) => {
     if (!state.settings) return; // refresh() has not finished yet
     const target = event.target instanceof Element ? event.target : null;
@@ -357,26 +389,6 @@ function bindEvents() {
     );
   });
 
-  document.querySelector(".text-links").addEventListener("click", async (event) => {
-    const target = event.target instanceof Element ? event.target : null;
-    const button = target?.closest("[data-link]");
-    if (!button) return;
-    const action = button.dataset.link;
-    if (action === "cmdinfo") return showCommandInfo();
-    if (action === "about") return showAbout();
-    const url = LINKS[action];
-    if (!url) return;
-    if (preview) {
-      ui.toast(url, "info");
-      return;
-    }
-    try {
-      await api.openUrl(url);
-    } catch (error) {
-      ui.toast(errorText(error), "error");
-    }
-  });
-
   document.addEventListener("click", (event) => {
     const target = event.target instanceof Element ? event.target : null;
     if (
@@ -385,6 +397,13 @@ function bindEvents() {
       !target?.closest("#btn-settings")
     ) {
       ui.closeSettings();
+    }
+    if (
+      ui.isMoreMenuOpen() &&
+      !target?.closest("#more-menu") &&
+      !target?.closest("#btn-more")
+    ) {
+      ui.closeMoreMenu();
     }
     if (
       ui.isLanguageMenuOpen() &&
@@ -398,6 +417,7 @@ function bindEvents() {
   window.addEventListener("keydown", (event) => {
     if (event.key === "Escape") {
       if (ui.isDialogOpen()) ui.dismissDialog();
+      else if (ui.isMoreMenuOpen()) ui.closeMoreMenu();
       else if (ui.isSettingsOpen()) ui.closeSettings();
       else if (ui.isLanguageMenuOpen()) ui.closeLanguageMenu();
     } else if (event.key === "F5") {

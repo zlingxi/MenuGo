@@ -56,7 +56,7 @@ MenuGo 就是這樣的工具。它最初是我為自己的日常使用而寫的�
 2. 點擊**傳統**或**預設**來切換。此時會出現一條「待重新啟動」提示列。
 3. 點擊提示列上的**重新啟動檔案總管**——或者在快速設定面板裡開啟*切換後自動重新啟動*，從此再也不用惦記這件事。
 
-次要選項（套用到所有使用者、自動隱藏工作列、工作列最上層顯示、外觀、語言、清除快取）位於右上角按鈕後方的面板裡；「關於 / 贊助 / 部落格 / GitHub」連結則在底部工具列上。
+次要選項（套用到所有使用者、自動隱藏工作列、工作列最上層顯示、外觀、語言、清除快取）位於右上角按鈕後方的面板裡；命令列說明與關於，以及 GitHub / 部落格 / 贊助連結，收在右上角的「更多」（⋮）選單裡。
 
 ### 鍵盤快速鍵
 
@@ -126,7 +126,7 @@ src-tauri/
   src/titlebar.rs           DWM 標題列著色（dwmapi FFI）
   src/config.rs             INI 設定持久化
   src/models.rs             DTO
-  tauri.conf.json           固定 560x330 視窗（resizable / maximizable = false）
+  tauri.conf.json           固定 560x300 視窗（resizable / maximizable = false）
   capabilities/default.json 權限
 ```
 

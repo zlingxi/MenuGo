@@ -56,7 +56,7 @@ MenuGo 就是这样的工具。它最初是我为自己日常使用而写的—�
 2. 点击**经典**或**默认**进行切换。此时会出现一条“待重启”提示栏。
 3. 点击提示栏上的**重启资源管理器**——或者在快速设置浮层里开启*切换后自动重启*，从此再也不用惦记这件事。
 
-次要选项（应用到所有用户、自动隐藏任务栏、任务栏置顶、外观、语言、清除缓存）位于右上角按钮背后的浮层里；“关于 / 捐赠 / 博客 / GitHub”链接则在底部工具栏上。
+次要选项（应用到所有用户、自动隐藏任务栏、任务栏置顶、外观、语言、清除缓存）位于右上角按钮背后的浮层里；命令行帮助与关于，以及 GitHub / 博客 / 捐赠链接，收在右上角的「更多」（⋮）菜单里。
 
 ### 键盘快捷键
 
@@ -126,7 +126,7 @@ src-tauri/
   src/titlebar.rs           DWM 标题栏着色（dwmapi FFI）
   src/config.rs             INI 设置持久化
   src/models.rs             DTO
-  tauri.conf.json           固定 560x330 窗口（resizable / maximizable = false）
+  tauri.conf.json           固定 560x300 窗口（resizable / maximizable = false）
   capabilities/default.json 权限
 ```
 

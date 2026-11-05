@@ -66,7 +66,7 @@ Grab the latest build from the [**Releases**](https://github.com/zlingxi/MenuGo/
 2. Click **Classic** or **Default** to switch. A "restart pending" bar appears.
 3. Click **Restart Explorer** on the bar — or turn on *auto-restart after switching* in the quick-settings overlay and never think about it again.
 
-Secondary options (apply to all users, auto-hide taskbar, taskbar always on top, appearance, language, clear cache) live in the overlay behind the top-right button; the About / Donate / Blog / GitHub links are on the bottom toolbar.
+Secondary options (apply to all users, auto-hide taskbar, taskbar always on top, appearance, language, clear cache) live in the overlay behind the top-right button; command line help and About, plus the GitHub / Blog / Donate links, live in the ⋮ (More) menu at the top right.
 
 ### Keyboard shortcuts
 
@@ -137,7 +137,7 @@ src-tauri/
   src/titlebar.rs           DWM title-bar coloring (dwmapi FFI)
   src/config.rs             INI settings persistence
   src/models.rs             DTOs
-  tauri.conf.json           Fixed 560x330 window (resizable / maximizable = false)
+  tauri.conf.json           Fixed 560x300 window (resizable / maximizable = false)
   capabilities/default.json Permissions
 ```
 

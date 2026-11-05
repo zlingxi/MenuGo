@@ -146,6 +146,7 @@ export function toast(message, kind = "info") {
 
 export function openSettings() {
   closeLanguageMenu();
+  closeMoreMenu();
   $("settings-panel").classList.remove("hidden");
   $("settings-scrim").classList.remove("hidden");
   $("btn-settings").setAttribute("aria-expanded", "true");
@@ -165,6 +166,7 @@ export function isSettingsOpen() {
 
 export function openLanguageMenu() {
   closeSettings();
+  closeMoreMenu();
   $("language-menu").classList.remove("hidden");
   $("btn-language").setAttribute("aria-expanded", "true");
 }
@@ -176,6 +178,24 @@ export function closeLanguageMenu() {
 
 export function isLanguageMenuOpen() {
   return !$("language-menu").classList.contains("hidden");
+}
+
+/* ---------- more (⋮) menu ---------- */
+
+export function openMoreMenu() {
+  closeSettings();
+  closeLanguageMenu();
+  $("more-menu").classList.remove("hidden");
+  $("btn-more").setAttribute("aria-expanded", "true");
+}
+
+export function closeMoreMenu() {
+  $("more-menu").classList.add("hidden");
+  $("btn-more").setAttribute("aria-expanded", "false");
+}
+
+export function isMoreMenuOpen() {
+  return !$("more-menu").classList.contains("hidden");
 }
 
 /* ---------- dialog ---------- */

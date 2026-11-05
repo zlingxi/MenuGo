@@ -353,6 +353,7 @@ button {
   flex: 1 1 auto;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   gap: 12px;
   padding: 18px;
   overflow-y: auto;
@@ -540,36 +541,53 @@ body.classic .mini-line {
   opacity: 0.82;
 }
 
-/* ---------- tool row ---------- */
+/* ---------- more (⋮) menu ---------- */
 
-.tool-row {
-  margin-top: auto;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  padding-top: 4px;
+.more-menu {
+  position: absolute;
+  top: 50px;
+  right: 18px;
+  width: 200px;
+  padding: 5px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background: var(--surface);
+  box-shadow: var(--shadow);
+  z-index: 40;
 }
 
-.text-links {
+.menu-item {
   display: flex;
   align-items: center;
-  justify-content: center;
   gap: 9px;
-  font-size: 11px;
-  color: var(--text-3);
-}
-
-.text-links button {
+  width: 100%;
+  height: 30px;
+  padding: 0 9px;
   border: 0;
+  border-radius: 6px;
   background: transparent;
-  color: var(--text-2);
-  font-size: 11px;
+  color: var(--text);
+  font-size: 12px;
+  text-align: left;
   cursor: pointer;
-  padding: 2px 0;
 }
 
-.text-links button:hover {
+.menu-item:hover {
+  background: var(--surface-2);
+}
+
+.menu-item .ico {
+  color: var(--text-2);
+}
+
+.menu-item:hover .ico {
   color: var(--accent);
+}
+
+.menu-sep {
+  height: 1px;
+  margin: 4px 6px;
+  background: var(--border);
 }
 
 /* ---------- status line ---------- */
