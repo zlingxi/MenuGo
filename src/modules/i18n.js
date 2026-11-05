@@ -1,0 +1,537 @@
+/**
+ * Multi-language catalogue.
+ *
+ * The core strings are localised for every supported language. English and
+ * Simplified Chinese also carry the extra strings used by the redesigned UI;
+ * other languages gracefully fall back to English for those, via `t()`.
+ */
+
+export const LANGUAGES = [
+  { id: "auto", label: "Auto" },
+  { id: "en", label: "English" },
+  { id: "zh-CN", label: "简体中文" },
+  { id: "zh-TW", label: "繁體中文" },
+  { id: "ja", label: "日本語" },
+  { id: "ko", label: "한국어" },
+  { id: "de", label: "Deutsch" },
+  { id: "fr", label: "Français" },
+  { id: "es", label: "Español" },
+  { id: "ru", label: "Русский" },
+  { id: "tr", label: "Türkçe" },
+];
+
+const en = {
+  statusClassic: "Win11 classic context menu style enabled",
+  statusDefault: "Win11 default context menu style enabled",
+  restartPending: "Restart pending",
+  desc: "Toggle between the classic and the default Windows 11 context menu.",
+  pleaseWait: "Please wait ...",
+  restartHint: "Restart explorer to activate the classic context menu",
+  confirmRestartBody:
+    "To apply the settings, Windows Explorer needs to restart!\nDo you want to restart Windows Explorer?",
+  errorGeneric: "An error occurred during the operation",
+  enableClassic: "Enable Win11 Classic Context Menu Style",
+  enableDefault: "Enable Win11 Default Context Menu Style",
+  restartExplorer: "Restart Explorer",
+  menu: "Menu ...",
+  applyAll: "Apply to All Users",
+  refresh: "Refresh",
+  cmdInfo: "Command Line Info",
+  otherOptions: "Other Options",
+  donate: "Donate",
+  contact: "Contact",
+  homepage: "HomePage",
+  about: "About",
+  taskbarTop: "Show Taskbar at Top of Screen",
+  autoHide: "Auto Hide Taskbar",
+  // Extra strings for the redesigned UI.
+  languages: "Languages",
+  clearCache: "Clear Cache",
+  clearCacheAction: "Clear",
+  clearCacheDesc: "Delete the settings and cache files MenuGo keeps in your user profile",
+  clearCacheConfirm:
+    "This deletes the settings and cache files MenuGo keeps in your user profile. Settings will be restored to defaults. Continue?",
+  clearCacheDone: "All files cleared",
+  clearCachePartial:
+    "Cleared. Files still in use will be removed automatically on the next launch.",
+  back: "Back",
+  ok: "OK",
+  cancel: "Cancel",
+  autoRestart: "Ask to Restart Explorer",
+  confirmRestartTitle: "Restart Explorer",
+  cmdInfoTitle: "Command Line Info",
+  aboutTitle: "About MenuGo",
+  aboutBody:
+    "MenuGo — a lightweight utility for switching Windows 11 context menu styles.\n\nToggles between classic and default menus, restarts Explorer, and includes taskbar options and multi-language support.\n\nBuilt with Tauri 2 + Rust.",
+  styleChanged: "Menu style updated",
+  restartDone: "Explorer restarted",
+  needAdmin: "Applying to all users requires administrator privileges.",
+  unsupportedOs: "This tool is designed for Windows 11 (build 22000+).",
+  taskbarUnsupported:
+    "Windows 11 no longer honours the taskbar position setting; only early builds support it.",
+  admin: "Admin",
+  portable: "Portable",
+};
+
+const zhCN = {
+  statusClassic: "Win11 经典右键菜单样式已启用",
+  statusDefault: "Win11 默认右键菜单样式已启用",
+  restartPending: "等待重启资源管理器",
+  desc: "使用本工具可轻松切换 Windows 11 经典与默认右键菜单样式。",
+  pleaseWait: "请稍等...",
+  restartHint: "重启资源管理器以使经典右键菜单生效",
+  confirmRestartBody:
+    "要应用设置，Windows 资源管理器需要重启！\n是否现在重启 Windows 资源管理器？",
+  errorGeneric: "操作时发生错误",
+  enableClassic: "启用 Win11 经典右键菜单样式",
+  enableDefault: "启用 Win11 默认右键菜单样式",
+  restartExplorer: "重启资源管理器",
+  menu: "菜单 ...",
+  applyAll: "应用到所有用户",
+  refresh: "刷新",
+  cmdInfo: "命令行帮助",
+  otherOptions: "其他选项",
+  donate: "捐赠",
+  contact: "联系方式",
+  homepage: "主页",
+  about: "关于",
+  taskbarTop: "在顶部显示任务栏",
+  autoHide: "自动隐藏任务栏",
+  languages: "语言",
+  clearCache: "清除缓存",
+  clearCacheAction: "清除",
+  clearCacheDesc: "删除 MenuGo 保存在用户目录中的设置与缓存文件",
+  clearCacheConfirm:
+    "将删除 MenuGo 保存在用户目录中的设置与缓存文件，设置恢复默认。要继续吗？",
+  clearCacheDone: "已清除全部文件",
+  clearCachePartial:
+    "已清除，剩余被占用的文件将在下次启动时自动删除",
+  back: "返回",
+  ok: "确定",
+  cancel: "取消",
+  autoRestart: "切换后询问是否重启资源管理器",
+  confirmRestartTitle: "重启资源管理器",
+  cmdInfoTitle: "命令行帮助",
+  aboutTitle: "关于 MenuGo",
+  aboutBody:
+    "MenuGo —— 一个轻量的 Windows 11 右键菜单样式切换小工具。\n\n支持经典 / 默认菜单一键切换、重启资源管理器、任务栏调整与多语言。\n\n基于 Tauri 2 + Rust 开发。",
+  styleChanged: "菜单样式已更新",
+  restartDone: "资源管理器已重启",
+  needAdmin: "应用到所有用户需要管理员权限。",
+  unsupportedOs: "本工具仅适用于 Windows 11（内部版本 22000 及以上）。",
+  taskbarUnsupported:
+    "新版 Windows 11 已不再支持修改任务栏位置，该功能仅对早期版本有效。",
+  admin: "管理员",
+  portable: "便携版",
+};
+
+const zhTW = {
+  statusClassic: "Win11 傳統右鍵選單樣式已啟用",
+  statusDefault: "Win11 預設右鍵選單樣式已啟用",
+  desc: "使用本工具可輕鬆切換 Windows 11 傳統與預設右鍵選單樣式。",
+  pleaseWait: "請稍等...",
+  restartHint: "重新啟動檔案總管以啟用傳統右鍵選單",
+  confirmRestartBody:
+    "若要套用設定，Windows 檔案總管必須重新啟動！\n是否要重新啟動 Windows 檔案總管？",
+  errorGeneric: "操作時發生錯誤",
+  enableClassic: "啟用 Win11 傳統右鍵選單樣式",
+  enableDefault: "啟用 Win11 預設右鍵選單樣式",
+  restartExplorer: "重新啟動檔案總管",
+  menu: "選單 ...",
+  applyAll: "套用至所有使用者",
+  refresh: "重新整理",
+  cmdInfo: "命令列說明",
+  otherOptions: "其他選項",
+  donate: "贊助",
+  contact: "聯絡我們",
+  homepage: "首頁",
+  about: "關於",
+  taskbarTop: "在畫面上方顯示工作列",
+  autoHide: "自動隱藏工作列",
+  languages: "語言",
+  clearCache: "清除快取",
+  clearCacheAction: "清除",
+  clearCacheDesc: "刪除 MenuGo 儲存在使用者目錄中的設定與快取檔案",
+  clearCacheConfirm:
+    "將刪除 MenuGo 儲存在使用者目錄中的設定與快取檔案，設定恢復預設值。要繼續嗎？",
+  clearCacheDone: "已清除全部檔案",
+  clearCachePartial:
+    "已清除，剩餘被佔用的檔案將在下次啟動時自動刪除",
+  back: "返回",
+  ok: "確定",
+  cancel: "取消",
+};
+
+const ja = {
+  statusClassic: "クラシックな Win11 コンテキスト メニューが有効です",
+  statusDefault: "デフォルトの Win11 コンテキスト メニューが有効です",
+  desc: "Windows 11 のクラシック／デフォルトのコンテキスト メニューを簡単に切り替えます。",
+  pleaseWait: "お待ちください...",
+  restartHint: "エクスプローラーを再起動して変更を適用してください",
+  confirmRestartBody:
+    "設定を適用するには、Windows エクスプローラーの再起動が必要です。\n再起動しますか？",
+  errorGeneric: "操作中にエラーが発生しました",
+  enableClassic: "クラシックな Win11 コンテキスト メニューを有効化",
+  enableDefault: "デフォルトの Win11 コンテキスト メニューを有効化",
+  restartExplorer: "エクスプローラーを再起動",
+  menu: "メニュー ...",
+  applyAll: "すべてのユーザーに適用",
+  refresh: "最新の情報に更新",
+  cmdInfo: "コマンドライン情報",
+  otherOptions: "その他のオプション",
+  donate: "寄付",
+  contact: "お問い合わせ",
+  homepage: "ホームページ",
+  about: "バージョン情報",
+  taskbarTop: "タスク バーを画面上部に表示",
+  autoHide: "タスク バーを自動的に隠す",
+  languages: "言語",
+  clearCache: "キャッシュをクリア",
+  clearCacheAction: "クリア",
+  clearCacheDesc: "ユーザーディレクトリに保存された設定とキャッシュファイルを削除します",
+  clearCacheConfirm:
+    "MenuGo がユーザーディレクトリに保存した設定・キャッシュファイルを削除し、設定を既定値に戻します。続行しますか？",
+  clearCacheDone: "すべてのファイルを削除しました",
+  clearCachePartial:
+    "削除しました。使用中のファイルは次回起動時に自動的に削除されます",
+  back: "戻る",
+  ok: "OK",
+  cancel: "キャンセル",
+};
+
+const ko = {
+  statusClassic: "Win11 클래식 상황에 맞는 메뉴 스타일 사용",
+  statusDefault: "Win11 기본 상황에 맞는 메뉴 스타일 사용",
+  desc: "클래식 및 기본 Windows 11 컨텍스트 메뉴를 쉽게 전환할 수 있습니다.",
+  pleaseWait: "기다려 주십시오 ...",
+  restartHint: "탐색기를 다시 시작하여 클래식 메뉴를 활성화하세요",
+  confirmRestartBody:
+    "설정을 적용하려면 Windows 탐색기를 다시 시작해야 합니다!\n지금 다시 시작하시겠습니까?",
+  errorGeneric: "작업 중 오류가 발생했습니다",
+  enableClassic: "Win11 클래식 컨텍스트 메뉴 스타일 사용",
+  enableDefault: "Win11 기본 컨텍스트 메뉴 스타일 사용",
+  restartExplorer: "탐색기 재시작",
+  menu: "메뉴 ...",
+  applyAll: "모든 사용자 적용",
+  refresh: "새로 고침",
+  cmdInfo: "명령 줄 정보",
+  otherOptions: "기타 옵션",
+  donate: "기부",
+  contact: "연락처",
+  homepage: "홈페이지",
+  about: "정보",
+  taskbarTop: "화면 맨 위에 작업 표시줄 표시",
+  autoHide: "작업 표시줄 자동 숨기기",
+  languages: "언어",
+  clearCache: "캐시 지우기",
+  clearCacheAction: "지우기",
+  clearCacheDesc: "사용자 디렉터리에 저장된 설정 및 캐시 파일을 삭제합니다",
+  clearCacheConfirm:
+    "사용자 디렉터리의 설정·캐시 파일을 삭제하고 설정을 기본값으로 되돌립니다. 계속하시겠습니까?",
+  clearCacheDone: "모든 파일이 삭제되었습니다",
+  clearCachePartial:
+    "삭제되었습니다. 사용 중이던 파일은 다음 실행 시 자동으로 삭제됩니다",
+  back: "뒤로",
+  ok: "확인",
+  cancel: "취소",
+};
+
+const de = {
+  statusClassic: "Klassischer Win11-Kontextmenüstil aktiviert",
+  statusDefault: "Standard-Kontextmenüstil von Win11 aktiviert",
+  desc: "Mit diesem Programm können Sie einfach zwischen dem klassischen und dem standardmäßigen Windows 11-Kontextmenü wechseln.",
+  pleaseWait: "Bitte warten ...",
+  restartHint: "Starten Sie den Explorer neu, um das klassische Kontextmenü zu aktivieren",
+  confirmRestartBody:
+    "Um die Einstellungen zu übernehmen, muss der Windows Explorer neu gestartet werden!\nMöchten Sie den Windows-Explorer neu starten?",
+  errorGeneric: "Während des Vorgangs ist ein Fehler aufgetreten",
+  enableClassic: "Klassischen Win11-Kontextmenüstil aktivieren",
+  enableDefault: "Win11-Standard-Kontextmenüstil aktivieren",
+  restartExplorer: "Explorer neu starten",
+  menu: "Menü ...",
+  applyAll: "Auf alle Benutzer anwenden",
+  refresh: "Aktualisieren",
+  cmdInfo: "Befehlszeileninfo",
+  otherOptions: "Andere Optionen",
+  donate: "Spenden",
+  contact: "Kontakt",
+  homepage: "Startseite",
+  about: "Über",
+  taskbarTop: "Taskleiste am oberen Bildschirmrand anzeigen",
+  autoHide: "Taskleiste automatisch ausblenden",
+  languages: "Sprachen",
+  clearCache: "Cache leeren",
+  clearCacheAction: "Löschen",
+  clearCacheDesc: "Von MenuGo im Benutzerprofil gespeicherte Einstellungen und Cachedateien löschen",
+  clearCacheConfirm:
+    "Dies löscht die von MenuGo im Benutzerprofil gespeicherten Einstellungs- und Cachedateien und setzt die Einstellungen auf die Standardwerte zurück. Fortfahren?",
+  clearCacheDone: "Alle Dateien gelöscht",
+  clearCachePartial:
+    "Bereinigt. Noch verwendete Dateien werden beim nächsten Start automatisch entfernt",
+  back: "Zurück",
+  ok: "OK",
+  cancel: "Abbrechen",
+};
+
+const fr = {
+  statusClassic: "Style de menu contextuel classique Win11 activé",
+  statusDefault: "Style de menu contextuel par défaut de Win11 activé",
+  desc: "Avec ce programme, vous pouvez facilement basculer entre le menu contextuel classique et celui par défaut de Windows 11.",
+  pleaseWait: "Veuillez patienter ...",
+  restartHint: "Redémarrez l'explorateur pour activer le menu contextuel classique",
+  confirmRestartBody:
+    "Pour appliquer les paramètres, l'explorateur Windows doit redémarrer !\nVoulez-vous redémarrer l'Explorateur Windows ?",
+  errorGeneric: "Une erreur est survenue pendant l'opération",
+  enableClassic: "Activer le style de menu contextuel classique Win11",
+  enableDefault: "Activer le style de menu contextuel par défaut Win11",
+  restartExplorer: "Redémarrer l'Explorateur",
+  menu: "Menu ...",
+  applyAll: "Appliquer à tous les utilisateurs",
+  refresh: "Actualiser",
+  cmdInfo: "Informations sur la ligne de commande",
+  otherOptions: "Autres options",
+  donate: "Faire un don",
+  contact: "Contact",
+  homepage: "Page d'accueil",
+  about: "À propos",
+  taskbarTop: "Afficher la barre des tâches en haut de l'écran",
+  autoHide: "Masquer automatiquement la barre des tâches",
+  languages: "Langues",
+  clearCache: "Vider le cache",
+  clearCacheAction: "Effacer",
+  clearCacheDesc: "Supprimer les fichiers de paramètres et de cache que MenuGo conserve dans le profil utilisateur",
+  clearCacheConfirm:
+    "Cette action supprime les paramètres et le cache de MenuGo dans le profil utilisateur et rétablit les valeurs par défaut. Continuer ?",
+  clearCacheDone: "Tous les fichiers ont été supprimés",
+  clearCachePartial:
+    "Nettoyé. Les fichiers encore utilisés seront supprimés automatiquement au prochain démarrage",
+  back: "Retour",
+  ok: "OK",
+  cancel: "Annuler",
+};
+
+const es = {
+  statusClassic: "Estilo de menú contextual clásico de Win11 activado",
+  statusDefault: "Estilo de menú contextual predeterminado de Win11 activado",
+  desc: "Cambie fácilmente entre el menú contextual clásico y el predeterminado de Windows 11.",
+  pleaseWait: "Espere, por favor ...",
+  restartHint: "Reinicie el Explorador para activar el menú contextual clásico",
+  confirmRestartBody:
+    "Para aplicar los ajustes es necesario reiniciar el Explorador de Windows.\n¿Desea reiniciarlo ahora?",
+  errorGeneric: "Se ha producido un error durante la operación",
+  enableClassic: "Activar el estilo de menú contextual clásico de Win11",
+  enableDefault: "Activar el estilo de menú contextual predeterminado de Win11",
+  restartExplorer: "Reiniciar Explorador",
+  menu: "Menú ...",
+  applyAll: "Aplicar a todos los usuarios",
+  refresh: "Actualizar",
+  cmdInfo: "Información de línea de comandos",
+  otherOptions: "Otras opciones",
+  donate: "Donar",
+  contact: "Contacto",
+  homepage: "Página principal",
+  about: "Acerca de",
+  taskbarTop: "Mostrar la barra de tareas en la parte superior",
+  autoHide: "Ocultar automáticamente la barra de tareas",
+  languages: "Idiomas",
+  clearCache: "Borrar la caché",
+  clearCacheAction: "Borrar",
+  clearCacheDesc: "Elimina los archivos de configuración y de caché que MenuGo guarda en el perfil de usuario",
+  clearCacheConfirm:
+    "Se eliminarán los archivos de configuración y de caché que MenuGo guarda en el perfil de usuario y la configuración volverá a los valores predeterminados. ¿Continuar?",
+  clearCacheDone: "Todos los archivos se han eliminado",
+  clearCachePartial:
+    "Listo. Los archivos aún en uso se eliminarán automáticamente en el próximo inicio",
+  back: "Volver",
+  ok: "Aceptar",
+  cancel: "Cancelar",
+};
+
+const ru = {
+  statusClassic: "Включен классический стиль контекстного меню Win11",
+  statusDefault: "Включен стиль контекстного меню Win11 по умолчанию",
+  desc: "С помощью этой программы вы можете легко переключаться между классическим и стандартным контекстным меню Windows 11.",
+  pleaseWait: "Пожалуйста, подождите ...",
+  restartHint: "Перезапустите проводник, чтобы активировать классическое контекстное меню",
+  confirmRestartBody:
+    "Чтобы применить настройки, необходимо перезапустить проводник Windows!\nВы хотите перезапустить Проводник Windows?",
+  errorGeneric: "Во время выполнения операции произошла ошибка",
+  enableClassic: "Включить классический стиль контекстного меню Win11",
+  enableDefault: "Включить стиль контекстного меню Win11 по умолчанию",
+  restartExplorer: "Перезапустить Explorer",
+  menu: "Меню ...",
+  applyAll: "Применить ко всем пользователям",
+  refresh: "Обновить",
+  cmdInfo: "Сведения о командной строке",
+  otherOptions: "Другие параметры",
+  donate: "Поддержать",
+  contact: "Контакты",
+  homepage: "Домашняя страница",
+  about: "О программе",
+  taskbarTop: "Показать панель задач в верхней части экрана",
+  autoHide: "Автоматически скрывать панель задач",
+  languages: "Языки",
+  clearCache: "Очистить кэш",
+  clearCacheAction: "Очистить",
+  clearCacheDesc: "Удалить файлы настроек и кэша, которые MenuGo хранит в профиле пользователя",
+  clearCacheConfirm:
+    "Файлы настроек и кэша MenuGo в профиле пользователя будут удалены, настройки сбросятся к значениям по умолчанию. Продолжить?",
+  clearCacheDone: "Все файлы удалены",
+  clearCachePartial:
+    "Очищено. Занятые файлы будут удалены автоматически при следующем запуске",
+  back: "Назад",
+  ok: "ОК",
+  cancel: "Отмена",
+};
+
+const tr = {
+  statusClassic: "Win11 klasik bağlam menüsü stili etkin",
+  statusDefault: "Win11 varsayılan bağlam menüsü stili etkin",
+  desc: "Bu program ile Klasik ve Varsayılan Windows 11 içerik menüsü arasında kolayca geçiş yapabilirsiniz.",
+  pleaseWait: "Lütfen bekleyin ...",
+  restartHint: "Klasik bağlam menüsünü etkinleştirmek için Explorer'ı yeniden başlatın",
+  confirmRestartBody:
+    "Ayarların uygulanması için Windows Gezgini'nin yeniden başlatılması gerekiyor!\nWindows Gezgini'ni yeniden başlatmak istiyor musunuz?",
+  errorGeneric: "İşlem sırasında bir hata oluştu",
+  enableClassic: "Win11 Klasik İçerik Menü Stilini Etkinleştir",
+  enableDefault: "Win11 Varsayılan İçerik Menü Stilini Etkinleştir",
+  restartExplorer: "Explorer'ı Yeniden Başlat",
+  menu: "Menü ...",
+  applyAll: "Tüm Kullanıcılara Uygula",
+  refresh: "Yenile",
+  cmdInfo: "Komut Satırı Bilgisi",
+  otherOptions: "Diğer Seçenekler",
+  donate: "Bağış",
+  contact: "İletişim",
+  homepage: "Web Sitesi",
+  about: "Hakkında",
+  taskbarTop: "Görev Çubuğunu Ekranın Üstünde Göster",
+  autoHide: "Görev Çubuğunu Otomatik Gizle",
+  languages: "Diller",
+  clearCache: "Önbelleği Temizle",
+  clearCacheAction: "Temizle",
+  clearCacheDesc: "MenuGo'nun kullanıcı profilinde sakladığı ayar ve önbellek dosyalarını siler",
+  clearCacheConfirm:
+    "Kullanıcı profilindeki MenuGo ayar ve önbellek dosyaları silinecek ve ayarlar varsayılan değerlere dönecek. Devam edilsin mi?",
+  clearCacheDone: "Tüm dosyalar silindi",
+  clearCachePartial:
+    "Temizlendi. Kullanımda olan dosyalar bir sonraki açılışta otomatik silinecek",
+  back: "Geri",
+  ok: "Tamam",
+  cancel: "İptal",
+};
+
+const DICT = {
+  en,
+  "zh-CN": zhCN,
+  "zh-TW": zhTW,
+  ja,
+  ko,
+  de,
+  fr,
+  es,
+  ru,
+  tr,
+};
+
+/* ------------------------------------------------------------------------- *
+ * Strings added by the redesigned UI.
+ *
+ * The 22 core keys stay fully localised in
+ * DICT below. New UI chrome is handled in three layers so no existing
+ * translation is lost:
+ *   EXTRA   - new descriptive copy, translated for en / zh-CN, others fall back
+ *   SHORT   - four short labels translated for every supported language
+ *   ALIASES - new keys mapped onto existing translated keys
+ * ------------------------------------------------------------------------- */
+
+const EXTRA = {
+  en: {
+    tagline: "Windows 11 context menu",
+    classicDesc: "Full menu on the first right-click, no extra step.",
+    defaultDesc: "Compact menu; extra items sit under “Show more options”.",
+    autoRestart: "Restart Explorer after switching",
+    restartDesc: "Explorer must restart for the change to take effect",
+    hintApplyAll: "Apply the style to every loaded user profile",
+    hintApplyAllAdmin: "Restart MenuGo as administrator to enable",
+    hintAutoHide: "Hide the taskbar when the pointer leaves it",
+    hintAutoRestart: "Restart Explorer right after switching styles",
+    hintTaskbarTop: "Move the taskbar to the top of the screen",
+    hintTaskbarTopOff: "Not supported by this Windows 11 build",
+    panelHint: "Changes are saved immediately",
+    theme: "Appearance",
+    themeHint: "Choose how MenuGo looks",
+    ariaTheme: "Color theme",
+    switchToDark: "Switch to dark theme",
+    switchToLight: "Switch to light theme",
+    ariaClose: "Close",
+    ariaSwitch: "Menu style",
+    autoLabel: "Auto",
+  },
+  "zh-CN": {
+    tagline: "Windows 11 右键菜单",
+    classicDesc: "右键一次即展开完整菜单，无需多余点击",
+    defaultDesc: "简洁的一级菜单，更多选项收在「显示更多选项」中",
+    autoRestart: "切换后自动重启 Explorer",
+    restartDesc: "重启资源管理器后生效",
+    hintApplyAll: "将样式应用到所有已加载的用户配置",
+    hintApplyAllAdmin: "需以管理员身份重启 MenuGo 才能启用",
+    hintAutoHide: "鼠标离开时自动收起任务栏",
+    hintAutoRestart: "切换样式后立即重启资源管理器",
+    hintTaskbarTop: "将任务栏移到屏幕顶部",
+    hintTaskbarTopOff: "当前 Windows 11 版本已不支持",
+    panelHint: "设置会立即保存",
+    theme: "外观",
+    themeHint: "选择界面配色",
+    ariaTheme: "界面主题",
+    switchToDark: "切换到深色主题",
+    switchToLight: "切换到浅色主题",
+    ariaClose: "关闭",
+    ariaSwitch: "菜单样式",
+    autoLabel: "跟随系统",
+  },
+};
+
+const SHORT = {
+  en: { currentStyle: "Current style", classicMenu: "Classic menu", defaultMenu: "Default menu", quickSettings: "Quick settings", blog: "Blog", themeLight: "Light", themeDark: "Dark", themeSystem: "System" },
+  "zh-CN": { currentStyle: "当前样式", classicMenu: "经典菜单", defaultMenu: "默认菜单", quickSettings: "快捷设置", blog: "博客", themeLight: "浅色", themeDark: "深色", themeSystem: "跟随系统" },
+  "zh-TW": { currentStyle: "目前樣式", classicMenu: "傳統選單", defaultMenu: "預設選單", quickSettings: "快速設定", blog: "部落格", themeLight: "淺色", themeDark: "深色", themeSystem: "跟隨系統" },
+  ja: { currentStyle: "現在のスタイル", classicMenu: "クラシック", defaultMenu: "既定", quickSettings: "クイック設定", blog: "ブログ", themeLight: "ライト", themeDark: "ダーク", themeSystem: "システム" },
+  ko: { currentStyle: "현재 스타일", classicMenu: "클래식", defaultMenu: "기본", quickSettings: "빠른 설정", blog: "블로그", themeLight: "밝게", themeDark: "어둡게", themeSystem: "시스템" },
+  de: { currentStyle: "Aktueller Stil", classicMenu: "Klassisch", defaultMenu: "Standard", quickSettings: "Schnelleinstellungen", blog: "Blog", themeLight: "Hell", themeDark: "Dunkel", themeSystem: "System" },
+  fr: { currentStyle: "Style actuel", classicMenu: "Classique", defaultMenu: "Par défaut", quickSettings: "Réglages rapides", blog: "Blog", themeLight: "Clair", themeDark: "Sombre", themeSystem: "Système" },
+  es: { currentStyle: "Estilo actual", classicMenu: "Clásico", defaultMenu: "Predeterminado", quickSettings: "Ajustes rápidos", blog: "Blog", themeLight: "Claro", themeDark: "Oscuro", themeSystem: "Sistema" },
+  ru: { currentStyle: "Текущий стиль", classicMenu: "Классический", defaultMenu: "По умолчанию", quickSettings: "Быстрые настройки", blog: "Блог", themeLight: "Светлая", themeDark: "Тёмная", themeSystem: "Системная" },
+  tr: { currentStyle: "Geçerli stil", classicMenu: "Klasik", defaultMenu: "Varsayılan", quickSettings: "Hızlı ayarlar", blog: "Blog", themeLight: "Açık", themeDark: "Koyu", themeSystem: "Sistem" },
+};
+
+const ALIASES = {
+  tagline: "desc",
+  restartTitle: "restartPending",
+  restartDesc: "restartHint",
+  restartNow: "restartExplorer",
+  osWarning: "unsupportedOs",
+  languageLabel: "languages",
+};
+
+export function t(key, lang) {
+  const extra = EXTRA[lang]?.[key] ?? EXTRA.en[key];
+  if (extra !== undefined) return extra;
+  const short = SHORT[lang]?.[key];
+  if (short !== undefined) return short;
+  const resolved = ALIASES[key] ?? key;
+  return DICT[lang]?.[resolved] ?? en[resolved] ?? en[key] ?? key;
+}
+
+/** Resolve the "auto" preference against the OS/browser locale. */
+export function resolveLang(preference) {
+  if (preference && preference !== "auto" && DICT[preference]) {
+    return preference;
+  }
+  const raw = (navigator.language || "en").toLowerCase();
+  if (raw.startsWith("zh")) {
+    return /tw|hk|mo/.test(raw) ? "zh-TW" : "zh-CN";
+  }
+  const base = raw.split("-")[0];
+  return DICT[base] ? base : "en";
+}

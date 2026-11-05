@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="zh-CN" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MenuGo</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script type="module" src="./main.js" defer></script>
+  </head>
+
+  <body>
+    <div class="app">
+      <header class="topbar">
+        <div class="brand">
+          <span class="brand-mark" aria-hidden="true">
+            <img src="assets/logo.png" alt="" draggable="false" />
+          </span>
+          <span class="brand-copy">
+            <span class="brand-name">MenuGo</span>
+            <span class="brand-sub" data-i18n="tagline">Windows 11 右键菜单</span>
+          </span>
+        </div>
+
+        <div class="topbar-actions">
+          <button id="btn-language" class="ghost-btn" aria-haspopup="listbox" aria-expanded="false">
+            <svg class="ico" viewBox="0 0 24 24" aria-hidden="true">
+              <circle cx="12" cy="12" r="9" />
+              <path d="M3 12h18M12 3c2.6 2.6 2.6 15.4 0 18M12 3c-2.6 2.6-2.6 15.4 0 18" />
+            </svg>
+            <span id="language-label">Auto</span>
+            <svg class="ico caret" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6" /></svg>
+          </button>
+          <button id="btn-theme" class="icon-btn" data-i18n-aria="ariaTheme">
+            <svg class="ico theme-sun" viewBox="0 0 24 24" aria-hidden="true">
+              <circle cx="12" cy="12" r="4" />
+              <path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4" />
+            </svg>
+            <svg class="ico theme-moon" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z" />
+            </svg>
+          </button>
+          <button id="btn-settings" class="icon-btn" aria-haspopup="dialog" aria-expanded="false" data-i18n-aria="quickSettings">
+            <svg class="ico" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M4 7h9M18 7h2M4 17h2M11 17h9" />
+              <circle cx="15.5" cy="7" r="2" />
+              <circle cx="8.5" cy="17" r="2" />
+            </svg>
+          </button>
+        </div>
+
+        <div id="language-menu" class="language-menu hidden" role="listbox" data-i18n-aria="languageLabel"></div>
+      </header>
+
+      <main class="content">
+        <div id="os-warning" class="banner banner-warn hidden">
+          <span class="banner-copy"><strong id="os-warning-text"></strong></span>
+        </div>
+
+        <section class="hero" aria-labelledby="style-title">
+          <div class="hero-top">
+            <div class="hero-copy">
+              <div class="eyebrow" data-i18n="currentStyle">当前样式</div>
+              <h1 id="style-title">&mdash;</h1>
+              <p id="style-desc"></p>
+            </div>
+            <div class="hero-art" aria-hidden="true">
+              <div class="mini-menu">
+                <span class="mini-line wide"></span>
+                <span class="mini-line"></span>
+                <span class="mini-line mid"></span>
+                <span class="mini-line wide"></span>
+              </div>
+            </div>
+          </div>
+
+          <div class="segmented" role="radiogroup" data-i18n-aria="ariaSwitch">
+            <button id="seg-classic" class="seg" role="radio" aria-checked="false">
+              <svg class="ico" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M4 5h16v4H4zM4 11h16v4H4zM4 17h10" />
+              </svg>
+              <span data-i18n="classicMenu">经典菜单</span>
+            </button>
+            <button id="seg-default" class="seg" role="radio" aria-checked="true">
+              <svg class="ico" viewBox="0 0 24 24" aria-hidden="true">
+                <rect x="4" y="5" width="16" height="14" rx="2" />
+                <path d="M7 9h10M7 13h6" />
+              </svg>
+              <span data-i18n="defaultMenu">默认菜单</span>
+            </button>
+          </div>
+        </section>
+
+        <div id="restart-banner" class="banner banner-pending hidden">
+          <span class="banner-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M13 2L5 13h6l-1 9 8-11h-6z" /></svg>
+          </span>
+          <span class="banner-copy">
+            <strong data-i18n="restartTitle">更改已写入</strong>
+            <span data-i18n="restartDesc">重启资源管理器后生效</span>
+          </span>
+          <button id="btn-restart-now" class="primary-btn" data-i18n="restartNow">立即重启</button>
+        </div>
+
+        <div class="tool-row">
+          <div class="text-links">
+            <button data-link="cmdinfo" data-i18n="cmdInfo">命令行帮助</button>
+            <span class="sep">&middot;</span>
+            <button data-link="about" data-i18n="about">关于</button>
+            <span class="sep">&middot;</span>
+            <button data-link="donate" data-i18n="donate">捐赠</button>
+            <span class="sep">&middot;</span>
+            <button data-link="blog" data-i18n="blog">博客</button>
+            <span class="sep">&middot;</span>
+            <button data-link="github">GitHub</button>
+          </div>
+        </div>
+      </main>
+
+      <footer class="statusline">
+        <span id="os-label">Windows</span>
+        <span class="sep">&middot;</span>
+        <span id="elevated-label" class="hidden" data-i18n="admin">管理员</span>
+        <span class="grow"></span>
+        <span id="version-label">v0.1.0</span>
+      </footer>
+    </div>
+
+    <div id="settings-scrim" class="scrim hidden"></div>
+
+    <aside id="settings-panel" class="settings-panel hidden" role="dialog" data-i18n-aria="quickSettings">
+      <div class="panel-head">
+        <h2 data-i18n="quickSettings">快捷设置</h2>
+        <button id="btn-close-settings" class="icon-btn small" data-i18n-aria="ariaClose">
+          <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" /></svg>
+        </button>
+      </div>
+
+      <div class="panel-body">
+        <label class="setting-row" for="sw-apply-all" id="row-apply-all">
+          <span class="setting-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3" /><path d="M3 19c0-3 2.7-5 6-5s6 2 6 5M17 8h4M19 6v4" /></svg>
+          </span>
+          <span class="setting-copy">
+            <span class="setting-title" data-i18n="applyAll">应用到所有用户</span>
+            <span class="setting-desc" id="hint-apply-all"></span>
+          </span>
+          <input id="sw-apply-all" type="checkbox" class="switch-input" />
+          <span class="switch" aria-hidden="true"></span>
+        </label>
+
+        <label class="setting-row" for="sw-auto-hide">
+          <span class="setting-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M4 17h16M5 13h14M8 9h8" /></svg>
+          </span>
+          <span class="setting-copy">
+            <span class="setting-title" data-i18n="autoHide">自动隐藏任务栏</span>
+            <span class="setting-desc" id="hint-auto-hide"></span>
+          </span>
+          <input id="sw-auto-hide" type="checkbox" class="switch-input" />
+          <span class="switch" aria-hidden="true"></span>
+        </label>
+
+        <label class="setting-row" for="sw-auto-restart">
+          <span class="setting-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M19 8a8 8 0 1 0 1 6" /><path d="M19 4v4h-4" /></svg>
+          </span>
+          <span class="setting-copy">
+            <span class="setting-title" data-i18n="autoRestart">切换后自动重启 Explorer</span>
+            <span class="setting-desc" id="hint-auto-restart"></span>
+          </span>
+          <input id="sw-auto-restart" type="checkbox" class="switch-input" />
+          <span class="switch" aria-hidden="true"></span>
+        </label>
+
+        <label class="setting-row" for="sw-taskbar-top" id="row-taskbar-top">
+          <span class="setting-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2" /><path d="M3 9h18" /></svg>
+          </span>
+          <span class="setting-copy">
+            <span class="setting-title" data-i18n="taskbarTop">任务栏置顶</span>
+            <span class="setting-desc" id="hint-taskbar-top"></span>
+          </span>
+          <input id="sw-taskbar-top" type="checkbox" class="switch-input" />
+          <span class="switch" aria-hidden="true"></span>
+        </label>
+
+        <div class="theme-block">
+          <div class="theme-head">
+            <span class="setting-title" data-i18n="theme">外观</span>
+            <span class="setting-desc" id="hint-theme"></span>
+          </div>
+          <div id="theme-options" class="theme-options" role="radiogroup" data-i18n-aria="ariaTheme">
+            <button type="button" class="theme-opt" role="radio" data-theme-value="light" aria-checked="true" data-i18n="themeLight">浅色</button>
+            <button type="button" class="theme-opt" role="radio" data-theme-value="dark" aria-checked="false" data-i18n="themeDark">深色</button>
+            <button type="button" class="theme-opt" role="radio" data-theme-value="system" aria-checked="false" data-i18n="themeSystem">跟随系统</button>
+          </div>
+        </div>
+
+        <div class="setting-row static">
+          <span class="setting-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M4 7h16M9 7V5a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2M6 7l1 13a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1l1-13M10 11v6M14 11v6" /></svg>
+          </span>
+          <span class="setting-copy">
+            <span class="setting-title" data-i18n="clearCache">清除缓存</span>
+            <span class="setting-desc" data-i18n="clearCacheDesc">删除本软件保存在用户目录的设置与缓存文件</span>
+          </span>
+          <button type="button" id="btn-clear-cache" class="danger-btn" data-i18n="clearCacheAction">清除</button>
+        </div>
+      </div>
+
+      <div class="panel-foot">
+        <span class="panel-hint" data-i18n="panelHint">设置会立即保存</span>
+        <button id="btn-panel-refresh" class="ghost-btn small" data-i18n="refresh">刷新</button>
+      </div>
+    </aside>
+
+    <div id="modal-backdrop" class="modal-backdrop hidden">
+      <div class="dialog" role="dialog" aria-modal="true" aria-labelledby="dialog-title">
+        <h2 id="dialog-title"></h2>
+        <div id="dialog-body" class="dialog-body"></div>
+        <div class="dialog-actions">
+          <button id="dialog-cancel" class="ghost-btn hidden" data-i18n="cancel">取消</button>
+          <button id="dialog-ok" class="primary-btn" data-i18n="ok">确定</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="toast" class="toast hidden" role="status"></div>
+  </body>
+</html>
